@@ -15,10 +15,6 @@ app.use(express.static("public"))
 app.use(cookieparser())
 
 //routes import
-app.use((req, res, next) => {
-  console.log("👉 Incoming Content-Type:", req.headers["content-type"]);
-  next();
-});
 
 import userRouter from './routes/user.routes.js'
 
