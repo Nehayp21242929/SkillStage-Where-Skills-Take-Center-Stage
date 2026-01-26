@@ -32,12 +32,4 @@ router.route("/current-user").get(getCurrentUser)
 
 // router.route("/refresh-token").post(refreshAccessToken)
 
-
-
-
-
-
-
-
-
 export default router

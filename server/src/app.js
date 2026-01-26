@@ -17,6 +17,7 @@ app.use(cookieparser())
 //routes import
 
 import userRouter from './routes/user.routes.js'
+import videoRouter from './routes/video.routes.js'
 
 // app.use(express.json({limit : "1600kb"}))
 // app.use(express.urlencoded({extended : true, limit : "1600kb"}))
@@ -24,6 +25,8 @@ import userRouter from './routes/user.routes.js'
 
 
 //routes declaration
-app.use("/api/v1/users", userRouter)
+app.use("/api/v1/users", userRouter);
+
+app.use("/api/v1/videos", videoRouter);
 
 export { app };

@@ -28,3 +28,5 @@ export const logoutUser = () => {
 export const getCurrentUser = () => {
   return API.get("/users/current-user")
 }
+
+export default API
