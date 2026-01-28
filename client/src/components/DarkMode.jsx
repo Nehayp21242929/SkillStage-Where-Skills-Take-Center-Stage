@@ -23,13 +23,13 @@ const DarkMode = () => {
   return (
      <button
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="p-2 rounded-full border border-black dark:border-white
+      className="p-2 rounded-full border-2 border-black dark:border-white
                  transition hover:scale-110"
     >
       {theme === "light" ? (
-        <Sun className="w-6 h-6 text-blue-400" />
+        <Moon className="w-6 h-6 text-black" />
       ) : (
-        <Moon className="w-6 h-6 text-gray-900 dark:text-white" />
+        <Sun className="w-6 h-6  dark:text-white" />
       )}
     </button>
   )

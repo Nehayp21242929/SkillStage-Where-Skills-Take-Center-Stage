@@ -21,7 +21,7 @@ const LoginForm = ({ onSuccess }) => {
       setUser(res.data.data.user);   // ✅ correct
       onSuccess();
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
+      alert(err.response?.data?.message || "Login failed Try again!!!");
     }
   };
 
@@ -45,7 +45,7 @@ const LoginForm = ({ onSuccess }) => {
         className="w-full p-2 bg-gray-100 dark:bg-gray-700 rounded text-black dark:text-white"
       />
 
-      <button className="w-full bg-blue-600 p-2 rounded text-white hover:bg-blue-500">
+      <button type="submit" className="w-full bg-blue-600 p-2 rounded text-white hover:bg-blue-500">
         Login
       </button>
     </form>

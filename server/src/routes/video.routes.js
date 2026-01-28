@@ -5,7 +5,8 @@ import {
 //   getChannelVideos,
   uploadVideo,
   galleryController,
-  getVideoByIdController
+  getVideoByIdController,
+  getAllVideos
 } from "../controllers/video.controller.js";
 
 import { upload } from "../middlewares/multer.middleware.js";
@@ -26,6 +27,8 @@ router.route("/upload").post(
 router.route("/gallery/:userId").get( verifyJWT, galleryController);
 
 router.route("/playvideo/:id").get( verifyJWT, getVideoByIdController);
+
+router.route("/allVideos/:userId").get( verifyJWT, getAllVideos);
 
 
 // // watch page

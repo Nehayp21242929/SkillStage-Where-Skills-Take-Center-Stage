@@ -7,9 +7,6 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 const uploadVideo = asyncHandler(async (req, res) => {
-    console.log("Files received:", req.files);
-
-
   const { title, description, duration } = req.body;
 
   if (!title || !description || !duration) {
@@ -77,8 +74,16 @@ const getVideoByIdController = asyncHandler(async (req, res) => {
   const videoId = req.params.id;
   const video = await Video.findById(videoId); // Mongoose
   if (!video) throw new ApiError(404, "Video not found");
-  res.status(200).json(new ApiResponse(200, video, "Video fetched successfully"));
+  return res.status(200).json(new ApiResponse(200, video, "Video fetched successfully"));
 });
+
+const getAllVideos = asyncHandler(async(req,res) => {
+  const videos = await Video.find({})
+  .select("videoFile thumbnail title duration views createdAt");
+  return res
+  .json(
+    new ApiResponse(200, videos, "Videos fetched successfully"));
+})
 
 
 /*
@@ -239,7 +244,8 @@ export {
     // getChannelVideos,
     uploadVideo,
     galleryController,
-    getVideoByIdController
+    getVideoByIdController,
+    getAllVideos
     
     
 }

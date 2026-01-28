@@ -18,9 +18,14 @@ export const AuthProvider = ({ children }) => {
     }
   }
   const login = async (formData) => {
-    const res = await loginUser(formData);
-    setUser(res.data.data.user);
-    return res;
+    try {
+      const res = await loginUser(formData);
+      setUser(res.data.data.user);
+      return res;
+    } catch (err) {
+      console.error("Login failed",err)
+      
+    }
   };
 
   // 🚪 LOGOUT
@@ -28,7 +33,7 @@ export const AuthProvider = ({ children }) => {
     try {
       await logoutUser();
       setUser(null);
-      window.location.href = "/"; // or "/"
+      window.location.href = "/";
     } catch (err) {
       console.error("Logout failed", err);
     }

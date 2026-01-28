@@ -13,7 +13,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-400 border-white dark:bg-gray-900 px-4 py-2 shadow-md flex items-center justify-between">
+    <nav className="bg-gray-300 border-white dark:bg-gray-900 px-4 py-3 shadow-md flex items-center justify-between">
       {/* Left: Brand Name */}
       <div className="flex items-center space-x-4">
         <h2
@@ -28,16 +28,15 @@ const Navbar = () => {
             WebkitTextFillColor: "transparent",
           }}
         >
-          MediaFun
+          SkillStage
         </h2>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex space-x-4 ml-6 text-gray-700 dark:text-gray-200 font-medium">
+        <div className="hidden md:flex space-x-4 ml-6 text-gray-800 dark:text-gray-200 font-medium">
           <button onClick={() => navigate("/")} className="hover:underline">Home</button>
           <button onClick={() => navigate("/trending")} className="hover:underline">Trending</button>
-          <button onClick={() => navigate("/videos")} className="hover:underline">Videos</button>
-          <button onClick={() => navigate("/clips")} className="hover:underline">Clips</button>
-          <button onClick={() => navigate("/photos")} className="hover:underline">Photos</button>
+          <button onClick={() => navigate("/videos")} className="hover:underline ">Videos</button>
+          <button onClick={() => navigate("/photos")} className="hover:underline ">Photos</button>
           <button
             onClick={() => navigate("/explore")}
             className="flex items-center space-x-1 hover:underline"
@@ -53,7 +52,7 @@ const Navbar = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="hidden sm:block px-3 py-1 rounded border border-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200
+          className="hidden sm:block px-3 py-1.25 rounded border border-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200
                 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ease-in-out w-70 focus:w-90"
          />
 
@@ -129,33 +128,30 @@ const Navbar = () => {
           className="md:hidden text-2xl"
           onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <FaBars />
+          <FaBars className="text-black dark:text-white"/>
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-14 left-0 w-full bg-gray-100 dark:bg-gray-900 md:hidden shadow-md flex flex-col space-y-2 px-4 py-2">
-          <button onClick={() => navigate("/")} className="hover:underline">Home</button>
-          <button onClick={() => navigate("/trending")} className="hover:underline">Trending</button>
-          <button onClick={() => navigate("/videos")} className="hover:underline">Videos</button>
-          <button onClick={() => navigate("/clips")} className="hover:underline">Clips</button>
-          <button onClick={() => navigate("/photos")} className="hover:underline">Photos</button>
-          <button onClick={() => navigate("/explore")} className="flex items-center space-x-1 hover:underline">
-            <FaCompass /> <span>Explore</span>
-          </button>
+        <div className="absolute top-14 right-2 mt-2 w-50 bg-white dark:bg-gray-800 shadow-lg rounded-md z-50 border py-2 border-gray-200 dark:border-gray-700 flex flex-col space-y-3">
+          <button onClick={() => navigate("/")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Home</button>
+          <button onClick={() => navigate("/trending")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Trending</button>
+          <button onClick={() => navigate("/videos")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Videos</button>
+          <button onClick={() => navigate("/photos")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Photos</button>
+          <button onClick={() => navigate("/explore")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Explore</button>
           {user && (
             <>
-              <button onClick={() => navigate("/upload")} className="flex items-center space-x-1 hover:underline">
-                <FaUpload /> Upload
+              <button onClick={() => navigate("/upload")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                Upload
               </button>
-              <button onClick={() => navigate("/profile")} className="hover:underline text-gray-700 dark:text-gray-200">Profile</button>
-              <button onClick={() => navigate("/settings")} className="hover:underline text-gray-700 dark:text-gray-200">Settings</button>
-              <button onClick={() => navigate("/logout")} className="text-red-500 hover:underline">Logout</button>
+              <button onClick={() => navigate("/profile")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Profile</button>
+              <button onClick={() => navigate("/settings")} className="block w-full px-4 py-2  text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Settings</button>
+              <button onClick={logout} className="block w-full px-4 py-2  hover:bg-gray-100 dark:hover:bg-gray-700 text-red-500 hover:underline">Logout</button>
             </>
           )}
           {!user && (
-            <button onClick={() => navigate("/login")} className="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-500">
+            <button onClick={() => navigate("/login")} className="block ml-4 mr-4 px-4 py-2  bg-green-600 text-white rounded hover:text-gray-200">
               Login
             </button>
           )}

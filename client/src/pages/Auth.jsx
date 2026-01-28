@@ -9,7 +9,11 @@ const Auth = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+      <div className="w-full max-w-md bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg relative">
+          <button onClick={() => navigate(-1)} 
+            className="absolute top-3 right-3 font-bold text-gray-500 text-xl hover:text-red-500 hover:text-2xl transition-all ease-in-out">✕
+          </button>
+
 
         <h2 className="text-2xl font-bold text-center mb-5 text-gray-900 dark:text-white">
           {isLogin ? "Login to MediaFun" : "Create your MediaFun account"}
