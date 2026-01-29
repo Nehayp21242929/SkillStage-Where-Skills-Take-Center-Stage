@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getChannelVideos } from "../api/video"; 
 import { Link } from "react-router-dom";
 
-export default function Gallery({ userId }) {
+export default function GalleryVideos({ userId }) {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +17,6 @@ export default function Gallery({ userId }) {
         setLoading(false);
       }
     };
-
     if (userId) fetchVideos();
   }, [userId]);
 
