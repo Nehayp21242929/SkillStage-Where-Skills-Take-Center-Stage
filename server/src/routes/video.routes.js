@@ -6,7 +6,9 @@ import {
   uploadVideo,
   galleryController,
   getVideoByIdController,
-  getAllVideos
+  getAllVideos,
+  addToHistory,
+  getHistory
 } from "../controllers/video.controller.js";
 
 import { upload } from "../middlewares/multer.middleware.js";
@@ -29,6 +31,13 @@ router.route("/gallery/:userId").get( verifyJWT, galleryController);
 router.route("/playvideo/:id").get( getVideoByIdController);
 
 router.route("/allVideos").get( getAllVideos);
+
+// add / update watch history
+router.route("/addHistory").post(verifyJWT, addToHistory);
+
+
+// get watch history of logged-in user
+router.route("/getHistory").get(verifyJWT, getHistory);
 
 
 // // watch page

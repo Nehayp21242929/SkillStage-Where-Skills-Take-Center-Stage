@@ -25,3 +25,11 @@ export const getVideoById = (videoId) => {
 export const getChannelVideos = (userId) => {
   return API.get(`/videos/gallery/${userId}`);
 };
+
+export const getHistoryVideos =() =>{
+  return API.get(`/videos/getHistory`)
+};
+
+export const addToWatchHistoryVideos =({ videoId, watchTime }) =>{
+  return API.post(`/videos/addHistory`, { videoId, watchTime })
+};

@@ -2,6 +2,8 @@ import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import GalleryVideos from "../profile/gallery";
 import GalleryPhotos from "../profile/GalleryPhotos";
+import WatchedVideos from "../profile/WatchedVideos";
+
 
 
 export default function Profile() {
@@ -46,7 +48,7 @@ export default function Profile() {
         {tab === "liked" && tab2 === "photos" && <p>Your liked photos will appear here</p>}
         {tab === "liked" && tab2 === "videos" && <p>Your liked videos will appear here</p>}
         {tab === "watched" && tab2 === "photos" && <p>watched photos to will appear here</p>}
-        {tab === "watched" && tab2 === "videos" && <p>watched videos will appear here</p>}
+        {tab === "watched" && tab2 === "videos" && <WatchedVideos userId={user._id} />}
       </div>
 
     </div>

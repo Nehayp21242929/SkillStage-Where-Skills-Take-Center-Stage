@@ -26,8 +26,8 @@ const UploadForm= ({ onSuccess }) => {
   return (
    <div>
         <h2>Upload a ...</h2>
-        <button onClick={() => navigate("/upload")} className="w-full bg-blue-600 p-2 rounded text-white hover:bg-blue-500">Video</button>
-        <button onClick={() => navigate("/uploadPhoto")} className="w-full bg-blue-600 p-2 rounded text-white hover:bg-blue-500">Photo</button>
+        <button onClick={() => navigate("/upload")} className="w-full bg-blue-600 p-20 rounded text-white hover:bg-blue-500">Video</button>
+        <button onClick={() => navigate("/uploadPhoto")} className="w-full bg-blue-600 p-20 rounded text-white hover:bg-blue-500">Photo</button>
 
     </div>
   );

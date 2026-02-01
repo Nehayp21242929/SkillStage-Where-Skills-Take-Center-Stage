@@ -28,7 +28,7 @@ export default function UploadVideo() {
       setLoading(true);
       await uploadVideo(formData);
       alert("Upload successful ✅");
-      navigate("/videos");
+      navigate("/VideoPage");
     } catch (err) {
       console.error(err);
       alert("Upload failed ❌");
@@ -38,7 +38,7 @@ export default function UploadVideo() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6">
+    <div className="pt-20 max-w-xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Upload Video</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <input type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} className="w-full p-2 border rounded" />

@@ -5,6 +5,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
+import { WatchHistoryVideo } from "../models/watchedVideo.model.js";
 
 const uploadVideo = asyncHandler(async (req, res) => {
   const { title, description, duration } = req.body;
@@ -84,6 +85,57 @@ const getAllVideos = asyncHandler(async(req,res) => {
   .json(
     new ApiResponse(200, videos, "Videos fetched successfully"));
 })
+
+const addToHistory = asyncHandler(async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({
+      success: false,
+      message: "Unauthorized",
+    });
+  }
+
+  const { videoId, watchTime } = req.body;
+
+  if (!videoId) {
+    return res.status(400).json({
+      success: false,
+      message: "videoId is required",
+    });
+  }
+
+  const history = await WatchHistoryVideo.findOneAndUpdate(
+    {
+      user: req.user._id,
+      video: videoId,
+    },
+    {
+      $set: {
+        watchTime: watchTime || 0,
+        watchedAt: new Date(),
+      },
+    },
+    { upsert: true, new: true }
+  );
+
+  res.status(201).json(
+    new ApiResponse(201, history, "Watched video added successfully")
+  );
+});
+
+
+const getHistory = asyncHandler(async (req, res) => {
+  const history = await WatchHistoryVideo.find({
+    user: req.user._id
+  })
+    .populate({
+      path: "video",
+      select: "title thumbnail duration views createdAt owner"
+    })
+    .sort({ watchedAt: -1 });
+   return res.json(
+    new ApiResponse(200,history,"watched video fetched successfully")
+  );
+});
 
 
 /*
@@ -245,7 +297,9 @@ export {
     uploadVideo,
     galleryController,
     getVideoByIdController,
-    getAllVideos
+    getAllVideos,
+    addToHistory,
+    getHistory
     
     
 }
