@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 import Videos from "./pages/Videos";
 import Photos from "./pages/Photos";
 import Profile from "./pages/Profile";
@@ -17,6 +18,7 @@ function App() {
     <AuthProvider>
       <Navbar/>
       <Routes>
+        <Route path="/" element={<Home />}/>
         <Route path="/VideoPage" element={<Videos />} />
         <Route path="/PhotoPage" element={<Photos />}/>
         <Route path="/profile" element={<Profile />} />
