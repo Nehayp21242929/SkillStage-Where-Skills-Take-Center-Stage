@@ -1,34 +1,38 @@
-import { useState } from "react";
-import { loginUser } from "../api/auth";
-import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const UploadForm= ({ onSuccess }) => {
-    
-  const navigate = useNavigate(); 
-
-//   const handleChange = (e) => {
-
-//     // setForm({ ...form, [e.target.name]: e.target.value });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const res = await loginUser(form);
-//       setUser(res.data.data.user); 
-//       onSuccess();
-//     } catch (err) {
-//       alert(err.response?.data?.message || "Login failed Try again!!!");
-//     }
-//   };
+const UploadForm = ({ onSuccess }) => {
+  const navigate = useNavigate();
 
   return (
-   <div>
-        <h2>Upload a ...</h2>
-        <button onClick={() => navigate("/upload")} className="w-full bg-blue-600 p-20 rounded text-white hover:bg-blue-500">Video</button>
-        <button onClick={() => navigate("/uploadPhoto")} className="w-full bg-blue-600 p-20 rounded text-white hover:bg-blue-500">Photo</button>
+    <div className="max-w-md mx-auto mt-50 p-6 rounded-xl shadow-md 
+                    bg-gray-300 dark:bg-gray-900
+                    text-black dark:text-white">
 
+      <h2 className="text-2xl font-semibold text-center mb-6">
+        Upload Content
+      </h2>
+
+      <div className="space-y-4">
+        <button
+          onClick={() => navigate("/upload")}
+          className="w-full py-4 rounded-lg font-medium
+                     bg-blue-600 text-white
+                     hover:bg-blue-500
+                     transition duration-200"
+        >
+          Upload Video
+        </button>
+
+        <button
+          onClick={() => navigate("/uploadPhoto")}
+          className="w-full py-4 rounded-lg font-medium
+                     bg-blue-600 text-white
+                     hover:bg-blue-500
+                     transition duration-200"
+        >
+          Upload Photo
+        </button>
+      </div>
     </div>
   );
 };

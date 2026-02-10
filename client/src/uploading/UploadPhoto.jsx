@@ -36,7 +36,7 @@ export default function UploadPhoto() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6">
+    <div className="pt-20 max-w-xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">Upload Photo</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <input type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} className="w-full p-2 border rounded" />
