@@ -1,6 +1,6 @@
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
-import GalleryVideos from "../profile/gallery";
+import GalleryVideos from "../profile/Gallery";
 import GalleryPhotos from "../profile/GalleryPhotos";
 import WatchedVideos from "../profile/WatchedVideos";
 import WatchedPhotos from "../profile/WatchedPhoto";
