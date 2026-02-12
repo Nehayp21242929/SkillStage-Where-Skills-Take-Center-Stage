@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const API = axios.create({
-  baseURL: "https://skillstage-where-skills-take-center.onrender.com/api/v1", 
+  baseURL: "https://skillstage-where-skills-take-center-h12u.onrender.com/api/v1", 
   withCredentials: true
 })
 
